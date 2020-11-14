@@ -1,3 +1,8 @@
+:root {
+  --main-font: "Open Sans", sans-serif;
+  --header-color: #24292e;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -6,10 +11,50 @@
 
 .container {
   min-height: 99vh;
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
   background-color: white;
+}
+
+nav.tabs {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.tabs a {
+  text-decoration: none;
+  color: #000;
+  font-family: var(--main-font);
+  font-weight: 300;
+  font-size: 14px;
+  padding: 8px 18px;
+}
+
+a.active {
+  position: relative;
+}
+
+.tabs a.active::after {
+  content: "";
+  background-color: #f9826c;
+  width: 100%;
+  position: absolute;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  transform: translate(0, 0);
+}
+
+.count {
+  background: #ccc;
+  padding: 0px 6px;
+  font-size: 12px;
+  color: #000;
+  font-weight: 300;
+  border: 1px solid transparent;
+  border-radius: 2em;
+  font-family: var(--main-font);
 }
 
 .main {
@@ -27,23 +72,22 @@ section.main {
 
 .profile-details {
   width: 250px;
-  border: 2px solid green;
-  /* height: 400px; */
   position: relative;
 }
 
 .profile-img-con {
-  border: 2px solid blue;
   position: relative;
+  height: 230px;
 }
 
 .img {
   width: 100%;
   border-radius: 100%;
   position: relative;
-  top: -20px;
+  top: -25px;
   z-index: 1;
 }
+
 .profile-emoji {
   border: 0.05rem solid #ccc;
   position: absolute;
@@ -55,7 +99,7 @@ section.main {
   width: 32px;
   height: 32px;
   text-align: center;
-  transform: translate(-3px, -82px);
+  transform: translate(-7px, -85px);
   cursor: pointer;
 }
 
@@ -63,11 +107,27 @@ section.main {
   font-size: 12px;
   cursor: pointer;
 }
-.repe-sec {
+
+.repo-sec {
   flex: 1;
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
 }
 
-section.details {
-  border: 2px solid purple;
+.profile-name {
+  font-family: var(--main-font);
+  font-weight: 600;
+  font-size: 21px;
+}
+.user-name {
+  color: grey;
+  font-size: 17px;
+  font-family: var(--main-font);
+  font-weight: 300;
+}
+
+.bio {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: var(--main-font);
 }
