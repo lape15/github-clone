@@ -9,6 +9,7 @@ query {
         nodes {
           name
           forkCount
+          description
           stargazerCount
           primaryLanguage {
             name
