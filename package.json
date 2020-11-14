@@ -1,0 +1,17 @@
+{
+  "name": "buycoins",
+  "version": "1.0.0",
+  "description": "challenge for buycoins",
+  "main": "index.js",
+  "scripts": {
+    "clear-build-cache": "rm -rf .cache/ dist/",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "find-config": "^1.0.0"
+  }
+}
