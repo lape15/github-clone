@@ -17,17 +17,17 @@
 }
 
 nav.tabs {
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #e1e4e8;
   padding: 10px 20px;
   text-align: center;
 }
 
 .tabs a {
   text-decoration: none;
-  color: #000;
+  color: #24292e;
   font-family: var(--main-font);
-  font-weight: 300;
-  font-size: 14px;
+  font-weight: 600;
+  font-size: 13px;
   padding: 8px 18px;
 }
 
@@ -114,7 +114,7 @@ section.main {
   font-size: 21px;
 }
 .user-name {
-  color: grey;
+  color: #586069;
   font-size: 17px;
   font-family: var(--main-font);
   font-weight: 300;
@@ -130,4 +130,52 @@ section.main {
 .repo-container {
   flex: 1;
   /* border: 2px solid purple; */
+  padding: 10px 15px;
+}
+
+.list-item {
+  padding: 15px 20px;
+  list-style: none;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.repo-name {
+  font-family: var(--main-font);
+  color: #0366d6;
+  font-size: 17px;
+  font-weight: 600;
+  margin: 10px 5px;
+  cursor: pointer;
+}
+
+.repo-name:hover {
+  text-decoration: underline;
+}
+
+.repo-info {
+  margin: 5px;
+  font-size: 11px;
+  color: #586069;
+  font-weight: 300;
+  font-family: var(--main-font);
+}
+
+.list-item-info {
+  padding: 5px 0;
+}
+
+.language-color {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  margin: 0 2px;
+  border-radius: 100%;
+}
+.info-item {
+  display: inline-block;
+  margin: 0 5px;
+  font-size: 12px;
+  color: #586069;
+  font-weight: 300;
+  font-weight: var(--main-font);
 }
