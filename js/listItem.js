@@ -1,3 +1,4 @@
+import moment from "moment";
 const createListItem = (repo) => {
   let li = document.createElement("LI");
   let p = document.createElement("p");
@@ -13,6 +14,7 @@ const createListItem = (repo) => {
   let divUpdated = document.createElement("div");
 
   //create star-svg
+
   let svgStar = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svgStar.setAttribute("viewBox", "0 0 16 16");
   svgStar.setAttribute("width", "14");
@@ -52,8 +54,6 @@ const createListItem = (repo) => {
   divLanguage.appendChild(languageColour);
   divLanguage.appendChild(spanLanguage);
 
-  console.log(repo.primaryLanguage);
-
   if (repo.primaryLanguage !== null) {
     if (repo.primaryLanguage.name === "JavaScript") {
       languageColour.style.backgroundColor = "#f1e05a";
@@ -69,12 +69,9 @@ const createListItem = (repo) => {
   starredCount.textContent = repo.stargazerCount;
   forkedCount.textContent = repo.forkCount;
 
-  let lastUpdated = new Date(repo.updatedAt).toDateString();
-  let formartedDate = lastUpdated.split(" ");
-  formartedDate.shift();
-  let lastUpdatedDate = formartedDate.join(",");
+  let lastUpdated = moment(repo.updatedAt).format("ll");
 
-  divUpdated.textContent = `Updated on ${lastUpdatedDate}`;
+  divUpdated.textContent = `Updated on ${lastUpdated}`;
 
   divStarred.appendChild(svgStar);
   divStarred.appendChild(starredCount);
@@ -84,9 +81,8 @@ const createListItem = (repo) => {
   // appending to div item
 
   div.appendChild(divLanguage);
-  div.appendChild(divStarred);
-  div.appendChild(divForked);
-  div.appendChild(divUpdated);
+  repo.starredCount > 0 ? div.appendChild(divStarred) : null;
+  repo.forkCount > 0 ? div.appendChild(divForked) : null;
   div.appendChild(divUpdated);
 
   //adding css classes

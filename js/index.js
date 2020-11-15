@@ -14,9 +14,6 @@ const activeTab = document.querySelector(".active");
 const repoTitle = document.querySelector(".repo-title");
 const repositoryContainer = document.querySelector(".repo-container");
 
-var svg = document.getElementsByTagName("svg")[1];
-console.log(svg);
-
 const fetchRepositories = (url) => {
   return fetch(url, {
     method: "POST",

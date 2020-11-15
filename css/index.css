@@ -156,12 +156,16 @@ section.main {
   margin: 5px;
   font-size: 11px;
   color: #586069;
-  font-weight: 300;
+  font-weight: 400;
   font-family: var(--main-font);
 }
 
 .list-item-info {
   padding: 5px 0;
+  /* border: 2px solid red; */
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .language-color {
@@ -174,8 +178,9 @@ section.main {
 .info-item {
   display: inline-block;
   margin: 0 5px;
-  font-size: 12px;
-  color: #586069;
-  font-weight: 300;
-  font-weight: var(--main-font);
+  /* border: 2px solid green; */
+  font-size: 11px;
+  color: #959da5;
+  font-weight: 400;
+  font-family: var(--main-font);
 }
