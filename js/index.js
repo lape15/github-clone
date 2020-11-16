@@ -13,6 +13,7 @@ const URL = "https://api.github.com/graphql";
 const activeTab = document.querySelector(".active");
 const repoTitle = document.querySelector(".repo-title");
 const repositoryContainer = document.querySelector(".repo-container");
+const avatar = document.querySelector(".avatar");
 
 const fetchRepositories = (url) => {
   return fetch(url, {
@@ -28,13 +29,17 @@ const fetchRepositories = (url) => {
 };
 
 const response = fetchRepositories(URL);
+
 loading = true;
+
 response
   .then((response) => response.json())
   .then((response) => {
     loading = false;
     profile = response.data;
     if (!loading && profile !== null) {
+      avatar.src = profile.viewer.avatarUrl;
+      avatar.alt = profile.viewer.login;
       image.src = profile.viewer.avatarUrl;
       profileName.innerText = profile.viewer.name;
       userName.innerText = profile.viewer.login;
