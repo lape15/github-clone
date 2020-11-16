@@ -3,7 +3,7 @@ import { createListItem } from "./listItem";
 
 const token = process.env.API_KEY;
 let profile = null;
-let image = document.querySelector("img");
+let image = document.querySelector(".img");
 const imgContainer = document.querySelector(".profile-img-con");
 const profileName = document.querySelector(".profile-name");
 let loading = false;

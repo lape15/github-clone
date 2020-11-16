@@ -1,24 +1,59 @@
 import moment from "moment";
 const createListItem = (repo) => {
+  function timeDiff(curr, prev) {
+    var ms_Min = 60 * 1000; // milliseconds in Minute
+    var ms_Hour = ms_Min * 60; // milliseconds in Hour
+    var ms_Day = ms_Hour * 24; // milliseconds in day
+    var ms_Mon = ms_Day * 30; // milliseconds in Month
+    var ms_Yr = ms_Day * 365; // milliseconds in Year
+    var diff = curr - prev; //difference between dates.
+    // If the diff is less then milliseconds in a minute
+    if (diff < ms_Min) {
+      return Math.round(diff / 1000) + " seconds ago";
+
+      // If the diff is less then milliseconds in a Hour
+    } else if (diff < ms_Hour) {
+      return Math.round(diff / ms_Min) + " minutes ago";
+
+      // If the diff is less then milliseconds in a day
+    } else if (diff < ms_Day) {
+      return Math.round(diff / ms_Hour) + " hours ago";
+
+      // If the diff is less then milliseconds in a Month
+    } else if (diff < ms_Mon) {
+      return "Around " + Math.round(diff / ms_Day) + " days ago";
+
+      // If the diff is less then milliseconds in a year
+    } else if (diff < ms_Yr) {
+      return "Around " + Math.round(diff / ms_Mon) + " months ago";
+    } else {
+      return "updated " + Math.round(diff / ms_Yr) + " year ago";
+    }
+  }
+
+  console.log(timeDiff(Date.now(), new Date(repo.updatedAt)));
+
   let li = document.createElement("LI");
   let p = document.createElement("p");
   let h4 = document.createElement("h4");
   let div = document.createElement("div");
   let divLanguage = document.createElement("div");
   let spanLanguage = document.createElement("span");
-  let languageColour = document.createElement("div");
+  let languageColour = document.createElement("span");
   let divStarred = document.createElement("div");
+  let svgSpan = document.createElement("span");
   let starredCount = document.createElement("span");
   let divForked = document.createElement("div");
   let forkedCount = document.createElement("span");
   let divUpdated = document.createElement("div");
+  let updatedSpan = document.createElement("span");
 
   //create star-svg
 
   let svgStar = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svgStar.setAttribute("viewBox", "0 0 16 16");
-  svgStar.setAttribute("width", "14");
-  svgStar.setAttribute("height", "14");
+  svgStar.setAttribute("width", "16");
+  svgStar.setAttribute("height", "16");
   svgStar.setAttribute("fill", "#586069");
   let starPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
   starPath.setAttributeNS(null, "fill-rule", "evenodd");
@@ -71,18 +106,21 @@ const createListItem = (repo) => {
 
   let lastUpdated = moment(repo.updatedAt).format("ll");
 
-  divUpdated.textContent = `Updated on ${lastUpdated}`;
+  updatedSpan.textContent = `Updated on ${lastUpdated}`;
 
-  divStarred.appendChild(svgStar);
+  svgSpan.appendChild(svgStar);
+  divStarred.appendChild(svgSpan);
   divStarred.appendChild(starredCount);
   divForked.appendChild(svgFork);
   divForked.appendChild(forkedCount);
+  divUpdated.appendChild(updatedSpan);
 
   // appending to div item
+  console.log(repo.primaryLanguage);
 
-  div.appendChild(divLanguage);
-  repo.starredCount > 0 ? div.appendChild(divStarred) : null;
-  repo.forkCount > 0 ? div.appendChild(divForked) : null;
+  repo.primaryLanguage ? div.appendChild(divLanguage) : "";
+  repo.stargazerCount > 0 ? div.appendChild(divStarred) : "";
+  repo.forkCount > 0 ? div.appendChild(divForked) : "";
   div.appendChild(divUpdated);
 
   //adding css classes
@@ -96,6 +134,7 @@ const createListItem = (repo) => {
   h4.classList.add("repo-name");
   p.classList.add("repo-info");
   languageColour.classList.add("language-color");
+  starredCount.classList.add("starred-count");
 
   // appending to individual repo
 
