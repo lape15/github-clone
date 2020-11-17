@@ -96,7 +96,6 @@ li.first-item {
 
 li.second-item {
   width: 40%;
-  /* border: 2px solid yellow; */
   text-align: right;
   font-size: 14px;
 }
@@ -123,20 +122,18 @@ a .mail-status {
   display: inline-block;
   width: 0;
   height: 0;
-  vertical-align: middle;
-  content: "";
   border-top-style: solid;
   border-top-width: 4px;
   border-right: 4px solid transparent;
   border-bottom: 0 solid transparent;
   border-left: 4px solid transparent;
+  margin-bottom: 5px;
 }
 
 .avatar {
   line-height: 1;
-  vertical-align: middle;
   border-radius: 50%;
-  /* box-shadow: 0 0 0 1px var(--color-avatar-border); */
+  cursor: pointer;
 }
 
 nav.tabs {

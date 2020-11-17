@@ -56,3 +56,13 @@ response
       });
     }
   });
+
+const listenScrollEvent = (e) => {
+  if (window.scrollY >= 400) {
+    console.log("Heyyy");
+  } else if (window.scrollY < 400) {
+    console.log("Hi");
+  }
+};
+
+window.addEventListener("scroll", listenScrollEvent);
