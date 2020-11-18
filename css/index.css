@@ -141,6 +141,18 @@ nav.tabs {
   padding: 30px 20px;
   text-align: center;
   height: 80px;
+  background: #fff;
+}
+
+.tabs.hide {
+  padding: 10px 20px;
+  height: 60px;
+  position: sticky;
+  width: 100%;
+  z-index: 3;
+  top: 0px;
+  /* background: red; */
+  transition: all ease-in;
 }
 
 .tabs a {
@@ -196,6 +208,7 @@ section.main {
 .profile-img-con {
   position: relative;
   height: 230px;
+  z-index: 4;
 }
 
 .profile-img-con .img {

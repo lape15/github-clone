@@ -57,12 +57,32 @@ response
     }
   });
 
-const listenScrollEvent = (e) => {
-  if (window.scrollY >= 400) {
-    console.log("Heyyy");
-  } else if (window.scrollY < 400) {
-    console.log("Hi");
-  }
+var tabs = document.querySelector(".tabs");
+var options = {
+  root: null,
+  rootMargin: "0px",
+  threshold: [0, 1],
 };
+var observer = new IntersectionObserver((enteries) => {
+  enteries.forEach((entry) => {
+    if (entry.intersectionRatio === 0) {
+      console.log(entry);
+      entry.target.classList.add("hide");
+      observer.unobserve(entry.target);
+    } else if (entry.intersectionRatio === 1) {
+      console.log(entry);
+      entry.target.classList.remove("hide");
+    }
+  });
+}, options);
+observer.observe(tabs);
 
-window.addEventListener("scroll", listenScrollEvent);
+// const listenScrollEvent = (e) => {
+//   if (window.scrollY >= 400) {
+//     console.log("Heyyy");
+//   } else if (window.scrollY < 400) {
+//     console.log("Hi");
+//   }
+// };
+
+// window.addEventListener("scroll", listenScrollEvent);

@@ -31,7 +31,7 @@ const createListItem = (repo) => {
     }
   }
 
-  console.log(timeDiff(Date.now(), new Date(repo.updatedAt)));
+  //   console.log(timeDiff(Date.now(), new Date(repo.updatedAt)));
 
   let li = document.createElement("LI");
   let p = document.createElement("p");
@@ -116,7 +116,7 @@ const createListItem = (repo) => {
   divUpdated.appendChild(updatedSpan);
 
   // appending to div item
-  console.log(repo.primaryLanguage);
+  //   console.log(repo.primaryLanguage);
 
   repo.primaryLanguage ? div.appendChild(divLanguage) : "";
   repo.stargazerCount > 0 ? div.appendChild(divStarred) : "";
