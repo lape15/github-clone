@@ -15,6 +15,10 @@ const repoTitle = document.querySelector(".repo-title");
 const repositoryContainer = document.querySelector(".repo-container");
 const avatar = document.querySelector(".avatar");
 
+let smallProfileImg = document.querySelector(".small-profile-img");
+
+let smallProfileName = document.querySelector(".small-profile-name");
+
 const fetchRepositories = (url) => {
   return fetch(url, {
     method: "POST",
@@ -46,6 +50,8 @@ response
       bio.innerText = profile.viewer.bio;
       var repoCount = document.createElement("SPAN");
       let count = profile.viewer.repositories.nodes.length;
+      smallProfileImg.src = profile.viewer.avatarUrl;
+      smallProfileName.innerText = profile.viewer.login;
       repoCount.innerText = count;
       repoCount.classList.add("count");
       activeTab.appendChild(repoCount);
@@ -58,31 +64,23 @@ response
   });
 
 var tabs = document.querySelector(".tabs");
-var options = {
-  root: null,
-  rootMargin: "0px",
-  threshold: [0, 1],
+var header = document.querySelector("header");
+var smallProfileCon = document.querySelector(".small-profile-con");
+
+const handler = (entries) => {
+  if (entries[0].isIntersecting) {
+    tabs.classList.remove("sticky");
+  } else {
+    tabs.classList.add("sticky");
+  }
+  if (entries[0].isIntersecting) {
+    smallProfileCon.classList.remove("show-small-profile-con");
+  } else {
+    smallProfileCon.classList.add("show-small-profile-con");
+  }
 };
-var observer = new IntersectionObserver((enteries) => {
-  enteries.forEach((entry) => {
-    if (entry.intersectionRatio === 0) {
-      console.log(entry);
-      entry.target.classList.add("hide");
-      observer.unobserve(entry.target);
-    } else if (entry.intersectionRatio === 1) {
-      console.log(entry);
-      entry.target.classList.remove("hide");
-    }
-  });
-}, options);
-observer.observe(tabs);
 
-// const listenScrollEvent = (e) => {
-//   if (window.scrollY >= 400) {
-//     console.log("Heyyy");
-//   } else if (window.scrollY < 400) {
-//     console.log("Hi");
-//   }
-// };
+const observer = new window.IntersectionObserver(handler);
 
-// window.addEventListener("scroll", listenScrollEvent);
+observer.observe(header);
+observer.observe(userName);

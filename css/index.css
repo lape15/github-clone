@@ -137,39 +137,69 @@ a .mail-status {
 }
 
 nav.tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   border-bottom: 1px solid #e1e4e8;
-  padding: 30px 20px;
-  text-align: center;
+  padding: 30px 20px 0 20px;
   height: 80px;
   background: #fff;
 }
 
-.tabs.hide {
+.tabs.sticky {
   padding: 10px 20px;
-  height: 60px;
   position: sticky;
   width: 100%;
   z-index: 3;
   top: 0px;
-  /* background: red; */
+  height: 60px;
   transition: all ease-in;
 }
 
-.tabs a {
+.small-profile-con {
+  width: 30%;
+  opacity: 0;
+  transition: opacity 0.1s ease-in;
+}
+
+.show-small-profile-con {
+  opacity: 1;
+  transition: opacity 0.1s ease-in;
+}
+
+.small-profile-img {
+  border-radius: 50%;
+}
+
+.small-profile-name {
+  color: #24292e;
+  font-family: var(--main-font);
+  line-break: 1.25;
+  font-weight: 600;
+  font-size: 14px;
+  position: relative;
+  top: -10px;
+}
+
+.nav-con {
+  width: 70%;
+  padding: 0px 10px;
+}
+
+.nav-con a {
   text-decoration: none;
   color: #24292e;
   font-family: var(--main-font);
   font-weight: 600;
   font-size: 13px;
-  padding: 8px 18px;
-  top: 19px;
 }
 
 a.active {
   position: relative;
+  top: 12px;
 }
 
-.tabs a.active::after {
+.nav-con a.active::after {
   content: "";
   background-color: #f9826c;
   width: 100%;
@@ -177,7 +207,7 @@ a.active {
   height: 1px;
   bottom: -2px;
   left: 0;
-  transform: translate(0, 0);
+  transform: translate(0, 15px);
 }
 
 .count {
