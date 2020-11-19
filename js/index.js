@@ -73,14 +73,16 @@ const handler = (entries) => {
   } else {
     tabs.classList.add("sticky");
   }
+};
+
+const otherHandler = (entries) => {
   if (entries[0].isIntersecting) {
     smallProfileCon.classList.remove("show-small-profile-con");
   } else {
     smallProfileCon.classList.add("show-small-profile-con");
   }
 };
-
 const observer = new window.IntersectionObserver(handler);
-
+const otherObserver = new window.IntersectionObserver(otherHandler);
 observer.observe(header);
-observer.observe(userName);
+otherObserver.observe(userName);
