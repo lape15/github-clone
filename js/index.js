@@ -14,6 +14,9 @@ const activeTab = document.querySelector(".active");
 const repoTitle = document.querySelector(".repo-title");
 const repositoryContainer = document.querySelector(".repo-container");
 const avatar = document.querySelector(".avatar");
+const statusEmoji = document.querySelector(".profile-emoji");
+const emoji = document.querySelector(".emoji");
+const message = document.querySelector(".message");
 
 let smallProfileImg = document.querySelector(".small-profile-img");
 
@@ -45,6 +48,8 @@ response
       avatar.src = profile.viewer.avatarUrl;
       avatar.alt = profile.viewer.login;
       image.src = profile.viewer.avatarUrl;
+      emoji.innerHTML = profile.viewer.status.emojiHTML;
+      message.innerText = profile.viewer.status.message;
       profileName.innerText = profile.viewer.name;
       userName.innerText = profile.viewer.login;
       bio.innerText = profile.viewer.bio;

@@ -5,6 +5,11 @@ query {
       name
       bio
       avatarUrl
+      status {
+        emoji
+        emojiHTML
+        message
+      }
       repositories(first: 20) {
         nodes {
           name
