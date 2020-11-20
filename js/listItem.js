@@ -1,62 +1,66 @@
-import moment from "moment";
 const createListItem = (repo) => {
-  function timeDiff(curr, prev) {
-    var ms_Min = 60 * 1000;
-    var ms_Hour = ms_Min * 60;
-    var ms_Day = ms_Hour * 24;
-    var ms_Mon = ms_Day * 30;
-    var ms_Yr = ms_Day * 365;
-    var diff = curr - prev;
-
-    console.log(new Date(diff), diff);
-    function month(a) {
-      const months = {
-        1: "Jan",
-        2: "Feb",
-        3: "Mar",
-        4: "Apr",
-        5: "May",
-        6: "Jun",
-        7: "Jul",
-        8: "Aug",
-        9: "Sep",
-        10: "Oct",
-        11: "Nov",
-        12: "Dec",
-      };
-      return months[a];
-    }
-
-    // If the diff is less then milliseconds in a minute
-    if (diff < ms_Min) {
-      return Math.round(diff / 1000) + " seconds ago";
-
-      // If the diff is less then milliseconds in a Hour
-    }
-
-    // else if (diff < ms_Day) {
-    //   console.log(diff);
-    //   return Math.round(diff / ms_Hour) + " hours ago";
-
-    //   // If the diff is less then milliseconds in a Month
-    // }
-
-    // else if (diff < ms_Mon) {
-    //   console.log(diff);
-    //   return "Around " + Math.round(diff / ms_Day) + " days ago";
-    //   // If the diff is less then milliseconds in a year
-    // }
-    else if (diff < ms_Yr && diff < ms_Mon) {
-      return `${month(
-        prev.getMonth()
-      )} ${prev.getDay()} ,${prev.getFullYear()}`;
-    } else {
-      console.log(prev);
-      return `${month(prev.getMonth())} ${prev.getDay()}`;
-    }
+  function monthString(a) {
+    const months = {
+      1: "Jan",
+      2: "Feb",
+      3: "Mar",
+      4: "Apr",
+      5: "May",
+      6: "Jun",
+      7: "Jul",
+      8: "Aug",
+      9: "Sep",
+      10: "Oct",
+      11: "Nov",
+      12: "Dec",
+    };
+    return months[a];
   }
 
-  console.log(timeDiff(Date.now(), new Date(repo.updatedAt)), "wrong date");
+  function timeDiff(curr, prev) {
+    const miliDate = new Date(prev).getTime();
+
+    const todaymiliDate = curr.getTime();
+
+    const milliDifference = todaymiliDate - miliDate;
+
+    let miliDiffHour = milliDifference / 3600000;
+
+    const year = 24 * 365;
+    const week = 24 * 7;
+
+    if (miliDiffHour < 24) {
+      return ` ${miliDiffHour} Hours ago`;
+    } else if (miliDiffHour >= 24 && miliDiffHour < 24 * 7) {
+      return `${Math.round(miliDiffHour / 24)} days ago`;
+    } else if (miliDiffHour >= 24 * 7 && miliDiffHour < 24 * 30.5) {
+      return `updated ${Math.round(miliDiffHour / week)} weeks ago`;
+    } else if (
+      miliDiffHour > 24 * 30.5 &&
+      miliDiffHour <= 24 * 365 &&
+      miliDiffHour / year < 0.9
+    ) {
+      return (
+        "on" +
+        " " +
+        monthString(new Date(prev).getMonth() + 1) +
+        " " +
+        new Date(prev).getDate() +
+        " "
+      );
+    } else {
+      return (
+        "on" +
+        " " +
+        monthString(new Date(prev).getMonth()) +
+        " " +
+        new Date(prev).getDate() +
+        ", " +
+        new Date(prev).getFullYear() +
+        " "
+      );
+    }
+  }
 
   let li = document.createElement("LI");
   let p = document.createElement("p");
@@ -129,9 +133,9 @@ const createListItem = (repo) => {
   starredCount.textContent = repo.stargazerCount;
   forkedCount.textContent = repo.forkCount;
 
-  let lastUpdated = moment(repo.updatedAt).format("ll");
+  let lastUpdated = timeDiff(new Date(), repo.updatedAt);
 
-  updatedSpan.textContent = `Updated on ${lastUpdated}`;
+  updatedSpan.textContent = `Updated  ${lastUpdated}`;
 
   svgSpan.appendChild(svgStar);
   divStarred.appendChild(svgSpan);
