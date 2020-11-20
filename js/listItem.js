@@ -145,7 +145,6 @@ const createListItem = (repo) => {
   divUpdated.appendChild(updatedSpan);
 
   // appending to div item
-  //   console.log(repo.primaryLanguage);
 
   repo.primaryLanguage ? div.appendChild(divLanguage) : "";
   repo.stargazerCount > 0 ? div.appendChild(divStarred) : "";
