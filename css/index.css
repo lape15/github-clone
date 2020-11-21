@@ -24,6 +24,11 @@ header {
   justify-content: space-between;
 }
 
+.svg-con a {
+  position: relative;
+  display: none;
+}
+
 form {
   width: 280px;
   margin: 0 10px;
@@ -33,6 +38,10 @@ form {
 
 .octicon {
   fill: currentColor;
+}
+
+.menu {
+  display: none;
 }
 
 input {
@@ -109,6 +118,10 @@ li.second-item {
   position: relative;
   margin: 10px 8px;
   top: 4px;
+}
+
+.nav-hide {
+  display: none;
 }
 
 a .mail-status {
@@ -324,7 +337,6 @@ section.details {
 
 .repo-container {
   flex: 1;
-  /* border: 2px solid purple; */
   padding: 10px 15px;
 }
 
@@ -465,13 +477,133 @@ section.details {
 }
 
 @media only screen and (max-width: 512px) {
+  header {
+    display: block;
+    padding: 10px;
+  }
+
+  .svg-con {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+
+  .svg-con a {
+    display: inline-block;
+    order: 3;
+  }
+
+  .menu {
+    display: inline-block;
+    order: 1;
+  }
+
+  .git {
+    order: 2;
+  }
+
+  form {
+    width: 100%;
+    display: none;
+    margin: 10px 0;
+  }
+
+  form.show-menu {
+    display: block;
+  }
+
+  ul.nav-right {
+    display: none;
+  }
+
+  ul.show-menu {
+    display: block;
+  }
+
+  li.first-item {
+    width: 100%;
+  }
+
+  .first-item a {
+    border-top: 1px solid #e1e4e8;
+    display: block;
+    padding: 5px 0;
+    margin: 8px 0px;
+  }
+
+  .first-item a.request {
+    display: block;
+  }
+
+  .first-item a.pull {
+    display: none;
+  }
+  .nav-hide {
+    display: block;
+  }
+
+  li.second-item {
+    width: 100%;
+    text-align: left;
+  }
+
   section.main {
     flex-direction: column;
-    flex-flow: nowrap;
+  }
+
+  .second-item a {
+    display: block;
+    border-top: 1px solid #e1e4e8;
+    padding: 5px 0;
+    margin: 8px 0px;
+  }
+
+  a.mobile-hide {
+    display: none;
+  }
+
+  .small-profile-con {
+    display: none;
   }
 
   .profile-details {
-    border: 2px solid red;
-    flex: 1;
+    width: 100%;
+    position: relative;
+  }
+
+  .profile-img-con {
+    width: 100%;
+    /* border: 2px solid blue; */
+    padding: 2px 0;
+    height: auto;
+    display: inline-block;
+  }
+
+  .profile-img-con .img {
+    width: 20%;
+    top: 0;
+  }
+
+  .profile-emoji {
+    transform: translate(0, 0);
+    position: static;
+    width: 100%;
+    border-radius: 0;
+    text-align: left;
+    margin-top: 5px;
+  }
+
+  .profile-emoji .message {
+    display: inline-block;
+  }
+
+  section.details {
+    display: none;
+  }
+  .repo-container {
+    /* border: 2px solid red; */
+  }
+  .bio {
+    font-size: 12px;
   }
 }

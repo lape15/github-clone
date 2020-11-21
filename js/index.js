@@ -68,6 +68,29 @@ response
     }
   });
 
+// change header class
+
+const headerMenu = document.querySelector(".menu");
+const headerForm = document.querySelector("form");
+const navMenu = document.querySelector(".nav-right");
+let otherMenu = false;
+
+const changeHeaderClass = () => {
+  otherMenu = !otherMenu;
+  if (otherMenu) {
+    headerForm.classList.add("show-menu");
+    navMenu.classList.add("show-menu");
+  } else {
+    headerForm.classList.remove("show-menu");
+    navMenu.classList.remove("show-menu");
+  }
+  // otherMenu = false;
+};
+
+console.log(otherMenu);
+
+headerMenu.addEventListener("click", changeHeaderClass);
+
 var tabs = document.querySelector(".tabs");
 var header = document.querySelector("header");
 var smallProfileCon = document.querySelector(".small-profile-con");
